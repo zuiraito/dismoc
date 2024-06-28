@@ -63,9 +63,10 @@ async def on_message(message):
             await message.channel.send('...')
             time.sleep(5)
 
-    if message.content.startswith('!poweroff'):
+    if message.content.startswith('!stop'):
         result = subprocess.run(['ping', '-c', '1', ip], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if result.returncode == 0:
+            time.sleep(30)
             await message.channel.send('Server wird heruntergefahren...')
             time.sleep(0.5)
             p.ChangeDutyCycle(6)
