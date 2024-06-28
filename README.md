@@ -1,4 +1,3 @@
-# dismoc
 DISMOC (Discord Minecraft Opeartion Controller)
 ---
 ### serStar.py
