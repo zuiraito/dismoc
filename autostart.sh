@@ -21,4 +21,3 @@ while true; do
     # Wait a few seconds before checking again
     sleep 10
 done
-

@@ -28,8 +28,9 @@ async def on_ready():
     print(f'We have logged in as {bot.user}')
     channel = bot.get_channel(botspam)
     if channel is not None:
+        _thread.start_new_thread(os.system, ('./securestart.sh',))
+        time.sleep(10)
         await channel.send('Der Server ist hochgefahren.')
-    _thread.start_new_thread(os.system, ('./securestart.sh',))
 
 @bot.event
 async def on_message(message):
