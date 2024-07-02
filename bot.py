@@ -6,22 +6,18 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import subprocess
 
-# Load the environment variables
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 if TOKEN is None:
     raise ValueError("No DISCORD_TOKEN found in the environment variables.")
 
-# Define intents and create bot instance
 intents = discord.Intents.default()
 intents.message_content = True
 
-# Create a bot instance with specified command prefix
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-# The channel ID you want to send a message to
-botspam = 806893179462090754  # Replace with your channel ID
+botspam = 806893179462090754 
 
 @bot.event
 async def on_ready():
@@ -36,9 +32,6 @@ async def on_ready():
 async def on_message(message):
     if message.author == bot.user:
         return
-
-    if message.content.startswith('!help'):
-        await message.channel.send('!hello  = Selbsterklärend.\n!start  = Startet den Minecraftserver.\n!stop   = Stoppt dem Minecraftserver.\n!status = Zeigt den Status an.\n\nWhitelist kann jamand machen, der den Rank "whitelister" hat.')
 
     if message.content.startswith('!hello'):
         await message.channel.send('Hello!')
@@ -63,7 +56,19 @@ async def on_message(message):
                 await message.channel.send('Stopping minecraft server')
                 _thread.start_new_thread(os.system, ('./stop.sh',))
             else:
-                await message.channel.send("Minecraft Server ist schon heruntergefahren.")
+                await message.channel.send("Minecraft Server ist schon aus.")
+        except Exception as e:
+            await message.channel.send(f"Ahh, sag nicht Rangi, dass: {e}")
+
+
+    if message.content.startswith('!pause'):
+        try:
+            result = subprocess.run(['screen', '-list'], stdout=subprocess.PIPE)
+            if b'.minecraft' in result.stdout:
+                await message.channel.send('Stopping minecraft server')
+                _thread.start_new_thread(os.system, ('./stop.sh',))
+            else:
+                await message.channel.send("Minecraft Server ist schon aus.")
         except Exception as e:
             await message.channel.send(f"Ahh, sag nicht Rangi, dass: {e}")
 
@@ -96,6 +101,4 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-# Run the bot with your token
 bot.run(TOKEN)
-
