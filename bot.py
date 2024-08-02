@@ -1,4 +1,5 @@
 import os
+import random
 import _thread
 import time
 import discord
@@ -25,6 +26,8 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+animal_emojis = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁", "🐮", "🐷", "🐽", "🐸", "🐵", "🙈", "🙉", "🙊", "🐒", "🐔", "🐧", "🐦", "🐤", "🐣", "🐥", "🦆", "🦅", "🦉", "🦇", "🐺", "🐗", "🐴", "🦄", "🐝", "🐛", "🦋", "🐌", "🐚", "🐞", "🐜", "🦟", "🦗", "🦂", "🐢", "🐍", "🦎", "🐙", "🦑", "🦐", "🦞", "🦀", "🐡", "🐠", "🐟", "🐬", "🐳", "🐋", "🦈", "🐊", "🐅", "🐆", "🦓", "🦍", "🐘", "🦏", "🦛", "🐪", "🐫", "🦒", "🐃", "🐂", "🐄", "🐎", "🐖", "🐏", "🐑", "🦙", "🐐", "🦌", "🐕", "🐩", "🦮", "🐕", "🐈", "🐓", "🦃", "🦤", "🦚", "🦜", "🦢", "🦩", "🕊", "🐇", "🦝", "🦨", "🦡", "🦫", "🦦", "🦥", "🐁", "🐀", "🐿️", "🦔"]
+
 botspam = 806893179462090754 
 antipaul = 0
 @bot.event
@@ -45,16 +48,9 @@ async def on_message(message):
     if message.content.startswith('!Hello'):
         await message.add_reaction('👋')
 
-    if message.content.startswith('!antiPaulMaßnahmen'):
-        global antipaul
-        if antipaul == 4: await message.channel.send("Reicht auch mal, hab dich lieb 🧡.")
-        if antipaul == 3: await message.channel.send("There is a high probability that League of Legends (LoL) players may commit war crimes due to the nature of the game. The competitive aspect of the game requires players to employ strategies and tactics that often result in team-killing, which could be seen as a form of war crime.\n\nIn addition, players can engage in cyberbullying or harassment during matches, which may lead them to commit real-life crimes. This is because they feel empowered by their in-game persona and do not think twice about engaging in such behavior due to the anonymity of online gaming.\n\nFurthermore, players may also be tempted to use cheat codes or other methods to gain an unfair advantage over other teams, which could lead them to commit war crimes if their team wins at all costs. This is because they feel justified in winning and taking what they think is rightfully theirs without regard for the consequences of their actions.\n\n In conclusion, while there is no direct correlation between LoL players and actual war criminals, the competitive nature of the game and the anonymity it provides can lead to negative behaviors that could potentially cross over into real-life crimes."); antipaul = 4
-        if antipaul == 2: await message.channel.send("League of Legends players are not known for their social skills or their ability to maintain healthy relationships. In fact, many of them seem more interested in sitting around playing video games all day than they do in meeting new people or forming meaningful connections with others. This lack of socialization may be due in part to the fact that most League players are introverted and prefer solitude over socializing. \n\nWhen it comes to their sexuality, many League players appear to be virgins who struggle with relationships outside of video games. It seems as though they would rather spend countless hours playing a virtual game than actually going out on dates or pursuing real-life romances. This lack of experience in the dating world may make it difficult for them to navigate the complexities of human interactions, and their limited social skills can be a barrier to forming meaningful connections with others.\n\nOverall, League players appear to be socially awkward and unskilled when it comes to relationships outside of video games. Their inability to connect with others may stem from their lack of socialization and experience in the dating world, making them seem like lost souls who struggle to find meaningful connections in real life."); antipaul = 3
-        if antipaul == 1: await message.channel.send("The League of Legends players are a bunch of whiners who can't take a little constructive criticism without getting their feelings hurt. They expect the world to revolve around them and their fragile egos, but when they lose, they blame everyone else for not playing at their level. These losers have no sense of sportsmanship or humility, and they act like petulant children when things don't go their way. \n\bIt's time to put these overgrown babies in their place. They should learn to take responsibility for their own actions and not blame others for their failures. If they can't handle losing graciously, they have no business playing a game that requires skill and strategy. \n\nLeague of Legends players need to grow up and stop acting like crybabies. They should be ashamed of themselves for bringing shame upon an otherwise great game by their childish behavior. The next time they play, they better remember that it's not about winning or losing - it's about playing the best you can with honor and integrity."); antipaul = 2
-        if antipaul == 0: await message.channel.send("### A Examination of League of Legends Players\n\nLeague of Legends, a game that somehow attracts millions of players, is basically a refuge for the hopelessly frustrated. The community is a perfect example of people who can strategize to conquer a virtual world but can’t seem to figure out how to hold a decent conversation or get a date. If you're spending your nights here, it’s no wonder you're single—no one wants to date someone who thinks 'gg' is an acceptable form of communication.\n\n The infamous 'tilt' is practically a rite of passage. Watching players spiral into rage over a lost match is like witnessing a toddler throw a tantrum because they didn’t get their way. When things go south, it’s never their fault; it’s always the ‘noob’ ADC or the ‘feed’ jungler. It’s a masterclass in avoiding accountability and projecting failures onto others. Maybe if they spent half as much time working on their gameplay as they do blaming teammates, they might actually improve.\n"); await message.channel.send("These players are experts at self-delusion, convinced that their next game will magically change their rank while ignoring the fact that their biggest enemy is often themselves. It's hilarious—here they are, convinced they’re just one game away from glory, yet they can’t even muster the social skills to ask someone out. If only they channeled that passion into their personal lives, perhaps they wouldn’t be spending every weekend with their gaming chair as their only companion.\n\nAnd the chat? It’s a toxic wasteland where insults fly faster than the abilities in-game. Instead of strategizing, players unleash a torrent of garbage talk, thinking they’re clever. Newsflash: berating a stranger online doesn’t make you a hero; it just highlights your inability to engage with real people. Your summoner name won’t save you from the fact that you’re stuck in the friend zone while calling others ‘noobs.’\n\nIn reality, League of Legends is less about skill and more about the worst aspects of human nature. While it can foster teamwork, it more often cultivates toxicity and resentment. These players are so focused on climbing ranks that they forget how to interact with actual human beings, proving that their greatest challenge isn’t the game—it’s their own social ineptitude.\n\nSo, the next time you log in, remember: you’re not just playing a game; you’re participating in a never-ending cycle of self-sabotage. Enjoy being single while you chase that elusive victory in a world where real connections seem just as far out of reach."); antipaul = 1
-
     if message.content.startswith('!h'):
-        await message.channel.send('`!Hi        ` = RasPi pingen.              \n`!Hello     ` = Server pingen.                                                 \n`!ip        ` = Zeigt Server-IP an.                                            \n`!map       ` = Link zur Dynmap.                                               \n`!start     ` = Startet den Minecraftserver.                                   \n`!stop      ` = Stoppt dem Minecraftserver (momentan ="!pause!").              \n`!pause     ` = Stoppt den Minecraftserver fährt den PC nicht runter.          \n`!status    ` = Zeigt den Status an.                                           \n`!wer       ` = Zeigt alle online Spieler\*innen an.                           \n`!mods      ` = Zeigt Mods an, die auf dem Server laufen.                      \n`!whitelist ` = Zeigt alle Spieler\*innen auf der Whitelist an.                \n`!kick name ` = Kickt "namen" vom Server.                                      \n`!ban name  ` = Bannt "namen" vom Server.                                      \n`!render x y` = Rendert die Map um x y (die wird dann automatisch geupdated).\n\n💤 = Server ist aus, mit `!start` starten.                                     \n🐨 = Spieler*in                                                                \n🚀 = Server Startet                                                            \n🙅 = Niemand online                                                            ')
+        await message.channel.send('`!Hi        ` = RasPi pingen.              \n`!Hello     ` = Server pingen.                                                 \n`!ip        ` = Zeigt Server-IP an.                                            \n`!map       ` = Link zur Dynmap.                                               \n`!start     ` = Startet den Minecraftserver.                                   \n`!stop      ` = Stoppt dem Minecraftserver (momentan ="!pause!").              \n`!pause     ` = Stoppt den Minecraftserver fährt den PC nicht runter.          \n`!status    ` = Zeigt den Status an.                                           \n`!wer       ` = Zeigt alle online Spieler\*innen an.                           \n`!mods      ` = Zeigt Mods an, die auf dem Server laufen.                      \n`!whitelist ` = Zeigt alle Spieler\*innen auf der Whitelist an.                \n`!kick name ` = Kickt "namen" vom Server.                                      \n`!ban name  ` = Bannt "namen" vom Server.                                      \n`!render x y` = Rendert die Map um x y (die wird dann automatisch geupdated).  \n`!time      ` = Zeigt die Gesamtspielzeit an.                                \n\n💤 = Server ist aus, mit `!start` starten.                                     \n🐨 = Spieler*in                                                                \n🚀 = Server startet                                                            \n🙅 = Niemand online                                                            ')
+
     if message.content.startswith('!mods'):
         mods = os.listdir('/home/ubuntu/mnt/mods')
         await message.channel.send(f'{mods}')
@@ -104,7 +100,6 @@ async def on_message(message):
         try:
             result = subprocess.run(['screen', '-list'], stdout=subprocess.PIPE)
             if b'.minecraft' in result.stdout:
-#                await message.channel.send("Minecraft Server läuft.")
                 response = requests.get(url)
                 if response.status_code == 200:
                     data = response.json()
@@ -112,9 +107,13 @@ async def on_message(message):
                         playerCount=data['players']['online']
                         if playerCount == 0:
                             await message.channel.send(f"Es ist keiner online, mit `!stop` stoppen")
-                        while playerCount > 0:
-                            await message.add_reaction('🐨')
-                            playerCount=playerCount-1
+                        else:
+                            selected_emojis = random.sample(animal_emojis, playerCount)
+                            for selected_emoji in selected_emojis:
+                                print(selected_emoji)
+                                await message.add_reaction(selected_emoji)
+
+
                     else:
                         await message.add_reaction('⏳')
                         await message.add_reaction('🚀')
@@ -220,6 +219,12 @@ async def on_message(message):
                 await message.add_reaction("💤")
         except Exception as e:
             await message.channel.send(f"Ahh, sag nicht Rangi, dass: {e}")
+
+    if message.content.startswith('!time'):
+       value = os.system("./printTotalPlayTime.sh") 
+       result = subprocess.run(["./printTotalPlayTime.sh"], capture_output=True, text=True, shell=True)
+       output=result.stdout
+       await message.channel.send(output) 
 
     await bot.process_commands(message)
 
